@@ -1,0 +1,202 @@
+\documentclass[9pt,reqno]{amsart}
+\usepackage{graphicx}
+\usepackage{fullpage}
+
+%\usepackage{mathpazo}
+%\usepackage{euler}
+
+
+
+\graphicspath{ {./urpimages/} }
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsfonts,amssymb,latexsym,amsmath, amsthm}
+\usepackage{tikz-cd}
+\usepackage{mathrsfs}
+\usepackage{comment}
+\excludecomment{confidential}
+\usepackage{enumitem}
+\usepackage{caption}
+\theoremstyle{definition}
+\usepackage[linktocpage=true]{hyperref}
+%% this allows for theorems which are not automatically numbered
+\newtheorem{defi}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{obs}{Observation}
+\newtheorem{exercise}{Exercise}[section]
+\newcommand{\heg}{\text{Heg}}
+\newtheorem{rem}{Remark}[section]
+\newtheorem{construction}{Construction}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{coro}{Corollary}[section]
+\DeclareMathOperator{\spec}{Spec}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\obj}{obj}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\ext}{Ext}
+\DeclareMathOperator{\tor}{Tor}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\gal}{Gal}
+\DeclareMathOperator{\coker}{coker}
+\newcommand{\degg}{\textup{deg}}
+\newtheorem{ex}{Example}[section]
+\usepackage{hyperref}
+\usepackage{xcolor}
+\definecolor{winered}{rgb}{0.5,0,0}
+%% The above lines are for formatting.  In general, you will not want to change these.
+%%Commands to make life easier
+\newcommand{\RR}{\mathbb R}
+\newcommand{\aff}{\mathbb A}
+\newcommand{\ff}{\mathbb F}
+\newcommand{\cccC}{\mathbf C}
+\newcommand{\oo}{\mathcal{O}}
+% \newcommand{\ZZ}{\mathbf Z}
+\newcommand{\pring}{k[x_1, \ldots , x_n]}
+\newcommand{\polyring}{[x_1, \ldots , x_n]}
+\newcommand{\poly}{\sum_{\alpha} a_{\alpha} x^{\alpha}} 
+\newcommand{\ZZn}[1]{\ZZ/{#1}\ZZ}
+% \newcommand{\QQ}{\mathbf Q}
+\newcommand{\rr}{\mathbf R}
+\newcommand{\cc}{\mathbf C}
+\newcommand{\complex}{\mathbf {C}_\bullet}
+\newcommand{\nn}{\mathbb N}
+\newcommand{\zz}{\mathbf Z}
+\newcommand{\cat}{\mathbf{C}}
+\newcommand{\ca}{\mathbf}
+\newcommand{\zzn}[1]{\zz/{#1}\zz}
+\newcommand{\qq}{\mathbf Q}
+\newcommand{\calM}{\mathcal M}
+\newcommand{\latex}{\LaTeX}
+\newcommand{\V}{\mathbf V}
+\newcommand{\tex}{\TeX}
+\newcommand{\sm}{\setminus} 
+\newcommand{\dom}{\text{Dom}}
+\newcommand{\lcm}{\text{lcm}}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\syl}{Syl}
+\DeclareMathOperator{\inn}{Inn}
+\newcommand{\sym}{\text{Sym}}
+\newcommand{\ord}{\text{ord}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\ran}{\text{Ran}}
+\newcommand{\pp}{\prime}
+\newcommand{\lra}{\longrightarrow} 
+\newcommand{\lmt}{\longmapsto} 
+\newcommand{\xlra}{\xlongrightarrow} 
+\newcommand{\gap}{\; \; \;}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\newcommand{\idealp}{\mathfrak{p}}
+\newcommand{\rmod}{\textit{R}-\textbf{Mod}}
+\newcommand{\idealP}{\mathfrak{P}}
+\newcommand{\ideala}{\mathfrak{a}}
+\newcommand{\idealb}{\mathfrak{b}}
+\newcommand{\idealA}{\mathfrak{A}}
+\newcommand{\idealB}{\mathfrak{B}}
+\newcommand{\idealF}{\mathfrak{F}}
+\newcommand{\idealm}{\mathfrak{m}}
+\newcommand{\s}{\mathcal{S}}
+\newcommand{\ccc}{\mathfrak{C}}
+\newcommand{\idealM}{\mathfrak{M}}
+%Itemize gap:
+\hypersetup{linktocpage}
+
+% \pagecolor{black}
+% \color{white}
+% Author info
+
+\title{Summer 2022 }
+\author{Juan Serratos}
+\begin{document}
+\maketitle
+\section{Establishing (Some) Topology}
+\begin{defi}
+Let $X$ be a set. A \textbf{topology} on $X$ is a collection $\tau$ of subsets of $X$ that satisfy the following three requirements:	
+\begin{itemize}
+	\item [\textup{(i)}] $X$ and $\varnothing$ belong to $\tau$; 
+	\item [\textup{(ii)}] the union of any (finite or infinite) number of sets in $\tau$ belong to $\tau$ again; and
+	\item [\textup{(iii)}] the intersection of any finite number of sets in $\tau$ belongs to $\tau$.
+\end{itemize}
+The pair $(X, \tau)$ is called a \textup{\textbf{topological space}}, and the members of the topology are called \textbf{open sets}. 
+\end{defi}
+
+
+
+
+\begin{ex} Let $X$ be any non-empty set and let $\tau$ be the collection of all subsets of $X$, i.e. $\tau = \mathcal{P}(X)$, the power set of $X$.  Then $\tau$ is called the \textit{discrete topology} on the set $X$, and the topological space $(X, \tau)$ is called the \textit{discrete space}. Another trivial example is when $\tau = \{ \varnothing, X \}$, and $\tau$ is called the \textit{indiscrete topology}.
+\end{ex} 
+
+
+\begin{prop} If $(X, \tau)$ is a topological space such that, for every $x \in X$, the singleton set $\{x \}$ is in $\tau$, then $\tau$ is a discrete topology.
+\end{prop} 
+\begin{proof} Suppose $(X, \tau)$ is a topological space such that for every $x \in X$, the singleton set $\{ x \} \in \tau$. Note that every set is the union of all its singleton subsets, and so if $S$ is any subset of $X$, then $S = \bigcup_{x \in S} \{x \}.$ Since we are given that each $\{ x \} \in \tau$ then the above equation implies that $S \in \tau$. As $S$ is an arbitrary subset of $X$, we have that $\tau$ is the discrete topology.
+\end{proof}
+
+\begin{defi}
+Let $X$ be a set and let $\tau_1$ and $\tau_2$ be topologies on $X$. If $\tau_1 \subset \tau_2$, then $\tau_1$ is \textbf{coarser} than $\tau_2$. If $\tau_2 \subset \tau_1$,is \textbf{finer} than $\tau_2$.  	
+\end{defi}
+\begin{ex}
+We endow the set $\rr^n$ with a topology, denoted by $|| \cdot ||_n$, which depics the natural topology induced by the Euclidean metric. Our open sets are given by the Euclidean metric: a set $U \subset \rr$ is open if for any $x \in U$ there is an $\epsilon  \in \rr_{\geq 0}$ such that the set $(x-\epsilon, x+ \epsilon) \subset U$. 
+\end{ex}
+
+\begin{defi}
+Let $(X, \tau)$ be a topological space and $x \in X$. A set $N \subset X$ is a \textbf{neighbourhood} of $x$ if there exists some $U \in \tau$ with $x \in U \subset N$. The set of all neighbourhoods of an element $x$ will be denoted by $\mathcal{N}_x$. 	
+\end{defi}
+\begin{defi}
+Let $(X, \tau)$ be a topological space. We say that a subset $F$ of $X$ is \textbf{closed} when $X \setminus F$ is in  $\tau$. 	
+\end{defi}
+\begin{ex}
+In $(\rr, || \cdot ||_n)$, the set $[0, 1]$is closed. This is because $\rr\setminus [0,1] = (- \infty, 0) \cup (1, \infty)$, which is the union of two open intervals. Moreover, we should begin to notice the motivation for the names of open and closed (as open and closed intervals); although we begun with the abstract notion of a topology, its motivation comes from the abstraction of the topology on $(\rr, || \cdot ||_n)$. 	
+\end{ex}
+
+\begin{ex}
+In $(X, \mathcal{P}(X))$ every subset of $X$ is closed. The reason for this being that for any $F \subset X$, we have $X\setminus F \in \mathcal P (X)$. 	
+\end{ex}
+
+\begin{rem}
+Given a topological space $(X, \tau)$, subsets of $X$ can be: open, closed, both open and closed, or neither open nor closed. If we have that a subset of $X$ is both 	open and closed, we will say that is it \textit{clopen}. Thus we say that, in the discrete space, every subset of $X$ is a clopen set. 
+\end{rem}
+\begin{defi}
+Let $(X, \tau)$ be a topological space and $S$ a setset of $X$. The \textbf{closure} of $S$, denoted by $\bar{S}$, is defined to be $\bar{S} = \bigcap \{ F \colon F \subset X\text{ is closed and contains } S\,  \}$.	
+\end{defi}
+Symbolically, the closure can be rewritten as $\bar{S} = \{ x \in X \colon N \cap S \neq \varnothing \text{ for all } N \in \mathcal{N}_x \}$. However, the fact that these two sets presentations of $\bar{S}$, as defined in Definition 1.5, are the same isn't obvious, and the proof will be omitted here. But we should remark that we should think of $\bar{S}$ as being the smallest closed set that contains $S$. 
+\begin{defi}
+Let $(X, \tau)$ be a topological space. We say that a set $D \subset X$ is \textbf{dense} in $X$ when $\bar{D} = X$. 	
+\end{defi}
+\begin{ex} $\qq$ is dense in $\rr$ with the Euclidean topology. This is usually presented early on in a first real analysis course when one proves that between any two real numbers, there is a rational number between them. Additionally, we have that the set of irrational numbers are dense in $\rr$ as well. 
+\end{ex}
+\begin{defi}
+Let $(X, \tau)$ be a topological space. A \textbf{base} $\mathcal{B}$ for $\tau$ is a subset of $\tau$ where each open set in $\tau$ can be written as a union of elements in $\mathcal{B}$
+\end{defi}
+\begin{defi}
+Let $(X, \tau)$ be a topological space. A \textbf{subbase} for $\tau$ is a set $\mathcal{J} \subset \tau$ with the property that the set of all finite intersections of sets in $\mathcal{J}$ is a base for $\tau$.	
+\end{defi}
+\begin{defi}
+A topological space $(X, \tau)$ is called \textbf{Hausdorff} space when distinct points can be seperated by open sets. That is, for all $x, y \in X$ and $x \neq y$, there exists $U, v \in \tau$ such that $x \in U$ and $y \in V$ with $U \cap V = \varnothing$. 	
+\end{defi}
+\begin{rem}
+The real numbers $\rr$ are Hausdorff with the Euclidean topology as if we let $x, y \in \rr$ and $x \neq y$, then letting $\epsilon = (|x-y|)/3$ implies that $(x- \epsilon, x+ \epsilon)$ and $(y- \epsilon, y + \epsilon)$ are disjoint open sets that contain $x$ and $y$, respectively. 	
+\end{rem}
+\begin{defi}
+Let $(X, \tau_X)$ and $(Y, \tau_Y)$ be topological spaces and let $f \colon X \to Y$ be a map. We call $f$ \textbf{continuous}	 at $x_0 \in X$ if the following condition is true: $N \in \mathcal{N}_{f(x_0)}$ implies $f^{-1} (N) \in \mathcal{N}_{x_0}$. 
+\end{defi}
+\begin{prop}
+Let $X$ and $Y$ be topological spaces and let $f \colon X \to Y$ be a function. THe following three statements are equivalent.
+\begin{itemize}
+	\item[(i)] $f \colon X \to Y$ is continuous on $X$,
+	\item[(ii)] $f^{-1}(U)$ is open in $X$ for all open sets $U$ in $Y$, 
+	\item[(iii)] $f^{-1} (F)$ is closed in $X$ for all closed sets $F$ of $Y$. 
+\end{itemize}
+\end{prop}
+\begin{prop}
+Let $X, Y$, and $Z$ be topological spaces and let $f \colon X \to Y$ be continuous on all $X$ and $g \colon Y \to Z$ be continuous on all of $Y$. Then $g \circ f \colon X \to Z$ is continuous of all of $X$. 	
+\end{prop}
+\begin{proof}
+	Since $f$ is continuous on all of $X$ we have that for every open set $U$ in $Y$, $f^{-1} (U)$ is open in $X$. Similarily, we have that for all open sets of $V$ in $Z$, we have that $g^{-1} (V)$ is open in $Y$. Now consider the composition of $g$ and $f$, that is, $g \circ f \colon X \to Z$. Let $W$ be an open set in $Z$. Then $(g \circ f)^{-1} (W) = f^{-1}(g^{-1} (W))$, and since $g^{-1}(W)$ is open in $Y$, so let $V = g^{-1} (W)$. Then $(gf)^{-1} (W) = f^{-1} (V)$, but as $V$ is open in $Y$, then $f^{-1} (V)$ is open in $X$. Thus $(gf)^{-1} (W)$ is open in $X$. Hence $gf$ is continuous on all of $X$. 
+\end{proof}
+
+
+
+\end{document}
